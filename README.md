@@ -1,6 +1,6 @@
 Cartão de Perfil.
 Esse projeto foi desenvolvido usando HTML e CSS
-O projeto consiste em um card centralizado na tela, usando as cor vermelho como base (#722F37). O cartão principal tem um fundo cinza claro com bordas arredondadas e efeito de sombra para melhorar a apresentação visual. No interior, adicionei uma foto de perfil em formato quadricular junto das minhas informações pessoais.
+O projeto consiste em um card centralizado na tela, usando a cor vermelho como base (#722F37). O cartão principal tem um fundo cinza claro com bordas arredondadas e efeito de sombra para melhorar a apresentação visual. No interior, adicionei uma foto de perfil em formato quadricular junto das minhas informações pessoais.
 O layout organiza de forma clara a foto, informações do curso e dados pessoais
 
 --------------------------------------------------------------------------------------------
