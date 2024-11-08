@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #722F37;
+        }
+
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #722F37;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #5a252b;
+        }
+
+        .result {
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .normal { background-color: #4CAF50; color: white; }
+        .warning { background-color: #ff9800; color: white; }
+        .danger { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Calculadora de IMC</h2>
+        <div class="input-group">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" step="0.1" min="0">
+        </div>
+        <div class="input-group">
+            <label for="altura">Altura (m)</label>
+            <input type="number" id="altura" step="0.01" min="0">
+        </div>
+        <button onclick="calcularIMC()">Calcular IMC</button>
+        <div id="resultado" class="result"></div>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const resultadoDiv = document.getElementById('resultado');
+
+            if (!peso || !altura || peso <= 0 || altura <= 0) {
+                resultadoDiv.innerText = 'Por favor, insira valores válidos';
+                resultadoDiv.style.display = 'block';
+                resultadoDiv.className = 'result warning';
+                return;
+            }
+
+            const imc = peso / (altura * altura);
+            let mensagem, classe;
+
+            if (imc < 18.5) {
+                mensagem = 'Ta magro';
+                classe = 'warning';
+            } else if (imc < 25) {
+                mensagem = 'Peso normal';
+                classe = 'normal';
+            } else if (imc < 30) {
+                mensagem = 'Um pouco acima do peso';
+                classe = 'warning';
+            } else {
+                mensagem = 'Va ao medico';
+                classe = 'danger';
+            }
+
+            resultadoDiv.innerHTML = `IMC: ${imc.toFixed(1)}<br>${mensagem}`;
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.className = 'result ' + classe;
+        }
+    </script>
+</body>
+</html>
